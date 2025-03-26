@@ -138,4 +138,20 @@ shoppyglobe/
 ├── README.md
 ├── tailwind.config.js
 └── vite.config.js
+## 🚀 Getting Started
 
+Follow these steps to run the project locally:
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm (v7 or higher) or yarn
+
+### Installation
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/<your-username>/shoppyglobe.git
+   cd shoppyglobe
+   ```
+   
