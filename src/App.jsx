@@ -5,6 +5,8 @@ import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import Footer from './components/Footer';
+import SignUp from './components/Signup';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </main>
         <Footer />

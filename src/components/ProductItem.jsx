@@ -1,53 +1,26 @@
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../store/cartSlice';
 
 const ProductItem = ({ product }) => {
-  const dispatch = useDispatch();
+  console.log('Product:', product); // Debug log
 
-  const handleAddToCart = () => {
-    dispatch(addToCart(product));
-  };
+  if (!product) return null;
 
   return (
-    <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-      {/* Product Image */}
-      <Link to={`/product/₹{product.id}`}>
-        <div className="relative">
-          <img
-            src={product.thumbnail || 'https://via.placeholder.com/400?text=No+Image'}
-            alt={product.title}
-            className="w-full h-56 object-contain p-4 hover:scale-105 transition-transform duration-300"
-          />
-        </div>
+    <div className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">
+      <img
+        src={product.thumbnail || 'https://via.placeholder.com/150'}
+        alt={product.title}
+        className="w-full h-48 object-contain mb-4"
+      />
+      <h2 className="text-lg font-semibold text-gray-800">{product.title}</h2>
+      <p className="text-gray-600">{product.description}</p>
+      <p className="text-blue-600 font-bold">₹{product.price.toFixed(2)}</p>
+      <Link
+        to={`/product/${product._id || product.id}`}
+        className="block mt-4 text-center bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors"
+      >
+        View Details
       </Link>
-
-      {/* Product Details */}
-      <div className="p-4">
-        <Link to={`/product/₹{product.id}`}>
-          <h2 className="text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors line-clamp-1">
-            {product.title}
-          </h2>
-        </Link>
-        <p className="text-gray-600 text-sm mt-1 line-clamp-2">{product.description}</p>
-        <p className="text-xl font-bold text-blue-600 mt-2">₹{product.price.toFixed(2)}</p>
-
-        {/* Buttons */}
-        <div className="mt-4 flex space-x-3">
-          <button
-            onClick={handleAddToCart}
-            className="flex-1 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors"
-          >
-            Add to Cart
-          </button>
-          <Link
-            to={`/product/₹{product.id}`}
-            className="flex-1 text-center border border-blue-500 text-blue-500 py-2 rounded-lg hover:bg-blue-50 transition-colors"
-          >
-            View Details
-          </Link>
-        </div>
-      </div>
     </div>
   );
 };

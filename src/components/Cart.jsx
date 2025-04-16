@@ -30,6 +30,7 @@ const Cart = () => {
         </div>
       ) : (
         <div className="flex flex-col lg:flex-row gap-8">
+          {/* Cart Items */}
           <div className="flex-1">
             {cartItems.map(item => (
               <div
@@ -73,6 +74,8 @@ const Cart = () => {
               </div>
             ))}
           </div>
+
+          {/* Order Summary */}
           <div className="lg:w-1/3">
             <div className="bg-white rounded-lg shadow-md p-6 sticky top-6">
               <h2 className="text-2xl font-bold text-gray-800 mb-4">Order Summary</h2>

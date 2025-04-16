@@ -16,37 +16,48 @@ const CartItem = ({ item }) => {
   };
 
   return (
-    <div className="flex items-center border-b pb-4">
-      <img 
-        src={item.thumbnail} 
-        alt={item.title} 
-        className="w-24 h-24 object-cover mr-4"
+    <div className="flex items-center justify-between bg-white rounded-lg shadow-md p-4 mb-4 hover:shadow-lg transition-shadow">
+      {/* Product Image */}
+      <img
+        src={item.thumbnail || 'https://via.placeholder.com/100?text=No+Image'}
+        alt={item.title}
+        className="w-20 h-20 object-contain rounded-md"
       />
-      <div className="flex-grow">
-        <h3 className="text-xl font-semibold">{item.title}</h3>
-        <p className="text-gray-600">₹{item.price}</p>
+
+      {/* Product Details */}
+      <div className="flex-grow ml-4">
+        <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+        <p className="text-gray-600">₹{item.price.toFixed(2)}</p>
       </div>
-      <div className="flex items-center">
-        <button 
+
+      {/* Quantity Controls */}
+      <div className="flex items-center space-x-2">
+        <button
           onClick={() => handleQuantityChange(item.quantity - 1)}
-          className="bg-gray-200 px-3 py-1 rounded"
+          className="px-3 py-1 bg-gray-200 text-gray-600 rounded-l-md hover:bg-gray-300 transition-colors"
         >
           -
         </button>
-        <span className="mx-4">{item.quantity}</span>
-        <button 
+        <span className="px-4 py-1 text-gray-800 border-t border-b">{item.quantity}</span>
+        <button
           onClick={() => handleQuantityChange(item.quantity + 1)}
-          className="bg-gray-200 px-3 py-1 rounded"
+          className="px-3 py-1 bg-gray-200 text-gray-600 rounded-r-md hover:bg-gray-300 transition-colors"
         >
           +
         </button>
       </div>
+
+      {/* Total Price */}
       <div className="ml-4">
-        <span className="font-bold">₹{(item.price * item.quantity).toFixed(2)}</span>
+        <span className="text-lg font-bold text-gray-800">
+          ₹{(item.price * item.quantity).toFixed(2)}
+        </span>
       </div>
-      <button 
+
+      {/* Remove Button */}
+      <button
         onClick={handleRemove}
-        className="ml-4 text-red-500 hover:text-red-700"
+        className="ml-4 text-red-500 hover:text-red-600 font-medium transition-colors"
       >
         Remove
       </button>

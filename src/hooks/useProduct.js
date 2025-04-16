@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import cricketProducts from '../data/cricketProducts';
+import axios from 'axios';
 
 export const useProduct = (id) => {
   const [product, setProduct] = useState(null);
@@ -9,23 +9,11 @@ export const useProduct = (id) => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        // Validate the id
-        const parsedId = parseInt(id, 10);
-        if (isNaN(parsedId)) {
-          throw new Error('Invalid product ID');
-        }
-
-        await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API delay
-        const foundProduct = cricketProducts.find(p => p.id === parsedId);
-        if (foundProduct) {
-          setProduct(foundProduct);
-        } else {
-          setError('Product not found');
-          setProduct(null); // Ensure product is null if not found
-        }
+        const response = await axios.get(`http://localhost:5000/products/${id}`);
+        console.log('API Response:', response.data); // Debug log
+        setProduct(response.data);
       } catch (err) {
         setError(err.message);
-        setProduct(null); // Ensure product is null on error
       } finally {
         setLoading(false);
       }

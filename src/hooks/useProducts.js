@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import cricketProducts from '../data/cricketProducts'; // Updated to default import
+import axios from 'axios';
 
 export const useProducts = () => {
   const [products, setProducts] = useState([]);
@@ -9,10 +9,11 @@ export const useProducts = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API delay
-        setProducts(cricketProducts);
+        const response = await axios.get('http://localhost:5000/products');
+        console.log('API Response:', response.data); // Debug log
+        setProducts(response.data);
       } catch (err) {
-        setError(err);
+        setError(err.message);
       } finally {
         setLoading(false);
       }
