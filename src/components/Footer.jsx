@@ -3,7 +3,7 @@ const Footer = () => {
     <footer className="bg-gray-900 text-gray-300 py-8 mt-auto">
       <div className="container mx-auto text-center">
         <p className="text-sm">
-          This project is made by <span className="font-semibold text-white">Parth Pandey</span>, 15 Sep batch student, for React Final Project.
+          This project is made by <span className="font-semibold text-white">Parth Pandey</span>, 15 Sep batch student, for  module 8 Final Project.
         </p>
         <div className="mt-4">
           <a
